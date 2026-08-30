@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>البوابة الالكترونية للجامعة -معهد العباسية
+        </title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <header class="top-header">
+            <h1>نظام ادارة شؤون الطلاب - معهد العباسية للحاسبات الالية و العلوم التجاري
+
+            </h1>
+
+        </header>
+
+        <main class="container">
+
+            <!--شاشة البحث-->
+
+          <div id="searchcard" class="card">
+            <h2>استعلام عن نتيجة</h2>
+
+         <!--استخدمنا الform عشان نفعل required-->
+         <form onsubmit="event.preventDefault (); searchResult();" class="form-group">
+            <input type="text" id="studentName" placeholder="ادخل اسم الطالب" required>
+            <input type="text" id="rollNumber" placeholder="ادخل رقم الجلوس " required>
+            <button type="submit" class="btn-primary">عرض النتيجه</button>
+         </form>
+
+         <div id="errorMsg" class="error-msg hidden"></div>
+
+          </div>
+
+          <!--شاشة النتيجة-->
+          <div id="resultcard" class="card hidden">
+          <h2 class="title-blue">نتيجة الطالب</h2>
+          <div id="studentDetails" class="student-box"></div>
+          <p class="table-titel">تقديرات المواد </p>
+          
+          <table dir="rtl">
+              <thead>
+                   <tr>
+                       <th> المادة</th>
+                       <th>التقديرات</th>
+                   </tr>
+              </thead>
+              <tbody id="gradesTableBody"></tbody>
+          </table>
+         
+          <div id="gpaBox" class="gpa-box"></div>
+
+          <button onclick="resetSearch()" class="btn-danger">استعلام اخر</button>
+
+        </div>
+
+     </main>
+
+     <script src="script.js" defer></script>
+
+    </body>
+
+</html>

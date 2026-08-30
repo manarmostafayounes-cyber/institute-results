@@ -1,0 +1,189 @@
+ *{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ } 
+
+ body {
+       background-color: #f2f4f7;
+       min-height: 100vh;
+       display: flex;
+      flex-direction: column;
+      align-items: center;
+} 
+
+/*الهيدرالازرق العلوي*/
+.top-header {
+    background-color:#2567b3;
+    color: white;
+    width: 100%;
+    padding: 25px 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-header h1 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;  
+}
+
+/*الحاويه الرئيسيه*/
+.container {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px 15px;
+    
+}
+
+.card{
+       background-color: white;
+       padding:25px 20px;
+       border-radius: 12px; 
+       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+       
+}
+
+.card h2{
+        text-align: center;
+        color: #1565c0;
+        font-size: 20px;
+        margin-bottom: 20px;
+
+}
+
+/*المدخلات الازرار */
+.form-group{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+}
+
+input { 
+    width: 100%; 
+    padding: 12px 15px;
+    border: 1px solid #d3d2d2;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: #faf8f8;      
+
+}
+
+input:focus {
+       border-color : #1565c0;
+       background-color: #fff;
+
+}
+
+/*زرار الازرق "عرض النتيجة"*/
+
+.btn-primary {
+     background-color: #1565c0;
+     color:white;
+     border:none;
+     padding:14px;
+     border-radius: 8px;
+     font-size: 15px;
+     font-weight: bold;
+     cursor: pointer;
+
+
+}
+
+.btn-danger {
+    background-color: #c62828;
+    color: white;
+    padding: 14px ;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;  
+} 
+
+/*شاشة النتيجه*/ 
+.student-box {
+       background: color #6c7f91;
+       border-right: 4px solid #1565c0;
+       padding: 15px;
+       border-radius: 6px;
+       margin-bottom: 20px;
+       line-height: 1.8;
+       font-size: 14px;
+       color: #333;
+       
+}
+
+.tabel-titel {
+       font-size: 14px;
+       font-weight: bold;
+       color: #555;
+       margin-bottom: 10px;
+
+}
+
+table {
+     width:100%;
+     direction: rti;
+     border-collapse: collapse;
+     margin-bottom: 20px;
+
+}
+
+
+table th{
+     background-color:#1565c0;
+     color: white;
+     padding: 12px;
+     font-size: 13px;
+     border:#1565c0 1px solid;
+     text-align: center;
+
+}
+
+table td{
+     padding: 10px;
+     font-size: 13px;
+     border:#1565c0 1px solid;
+     text-align: center;
+}
+
+table td:last-child {
+       color:#1565c0;
+       font-weight: bold; 
+       direction: ltr;          /* +A بدلان من   +A لسطر الجديد لظبط */
+       unicode-bidi: embed;     /*لضمان ثبات الاتجاه */
+}
+
+.gpa-box {
+      background-color: #e3f2fd;
+      color: #0d47a1;
+      padding:  12px 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: bold;
+
+}
+
+.error-msg {
+      margin-top: 15px;
+      padding: 12px;
+      background-color: #ffebee;
+      color: #c62828;
+      border-radius:8px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: bold;
+      
+}
+
+.hidden {
+      display: none !important;
+}
