@@ -6,8 +6,16 @@
         <title>البوابة الالكترونية للجامعة -معهد العباسية
         </title>
         <link rel="stylesheet" href="styles.css">
+        <script  src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script  src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     </head>
     <body>
+        
+      
+        <div id="splash-screen">
+        <img src="images/splash.png" alt="شعار معهد العباسية" id="splash-logo">
+        </div>
+
 
         <header class="top-header">
             <h1>نظام ادارة شؤون الطلاب - معهد العباسية للحاسبات الالية و العلوم التجاري
@@ -50,15 +58,18 @@
               <tbody id="gradesTableBody"></tbody>
           </table>
          
-          <div id="gpaBox" class="gpa-box"></div>
+          <div id="gpaBox" class="gpa-box"> </div> 
 
-          <button onclick="resetSearch()" class="btn-danger">استعلام اخر</button>
 
-        </div>
+
+          <div class="action-buttons"> 
+            <button onclick="downloadPDF()" class="pdf-btn">  <span>تحميل نتيجةPDF</span>   </button>
+            <button onclick="resetSearch()" class="btn-danger">استعلام اخر</button>
+         </div>
 
      </main>
 
-     <script src="script.js" defer></script>
+     <script src="script.js" ></script>
 
     </body>
 

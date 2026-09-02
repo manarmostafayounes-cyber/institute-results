@@ -27,19 +27,6 @@ const subjectNames = [
 ]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 async function searchResult() {
 
     let nameInput = document.getElementById("studentName").value.trim();
@@ -54,6 +41,14 @@ async function searchResult() {
         showError("يرجى ادخال اسم الطالب ورقم الجلوس معا!")
         return;
     }
+       let searchBtn = document.getElementById("searchcard").querySelector("button");
+       if (searchBtn) {
+          searchBtn.disabled = true;
+          searchBtn.innerText = "جاري البحث ";
+
+       }
+
+
 
     try {  
     // 2. جلب البيانات ديناميكبا من جوجل شيت 
@@ -62,8 +57,16 @@ async function searchResult() {
 
      //التاكد ان النتيجه موجوده و مفيش خطأ 
      if (!student.error) {
+         let cleanInput = normalizeText(nameInput);
+         let cleanStudentName = normalizeText(student.studentName);
+
+         let inputWords =  cleanInput.split(" ").filter(word => word.length > 0);
+         let isMatch = inputWords.every(word => cleanStudentName.includes(word));
+
+
+
         //التاكد من ان الاسم المكتوب يطابق الاسم المسجل في جوجل شيت 
-        if (!normalizeText(student.studentName).includes(normalizeText(nameInput))){
+        if (!isMatch){
            showError("اسم الطالب غير مطابق لرقم الجلوس المدخل!")
          return;
         }
@@ -116,6 +119,12 @@ async function searchResult() {
 
 } catch (error) {
     showError(" حدث خطأ اثناء الاتصال بقاعده البيانات!")
+
+} finally {
+  if (searchBtn) {
+    searchBtn.disabled = false;
+    searchBtn.innerHTML = "اظهار النتيجه ";
+  }
 } 
 
 }
@@ -123,11 +132,14 @@ async function searchResult() {
 //داله اظهار الخطأ
     
     function showError(msg) {
-        let errorMsg = document.getElementById("errorMsg");
-        if (errorMsg) {
-          errorMsg.innerHTML = msg;
-          errorMsg.classList.remove("hidden");
-        }
+      Swal.fire({
+         icon: 'error',
+         title:'تنبيه',
+         text: msg,
+         confirmButtonText: 'حسنا',
+         confirmButtonColor:  '#0056b3',
+         customClass:{ popup:'swal-rtl'}
+      });
     }
 
     //داله اعاده البحث 
@@ -160,6 +172,44 @@ async function searchResult() {
        .replace(/ى/g, "ي")      //تحويل ال ى ال ي (او العكس )
        .replace(/ة/g, "ه")      //تحويل التاء المربوطة الى ه
        .replace(/-/g, "")
+       .replace(/عبد\s+/g, "عبد")
+       .replace(/ال/g, "")
        .replace(/\s+/g," ");
     }
     
+
+
+
+    function downloadPDF() {
+       let element = document.getElementById("resultcard");
+
+       let opt = {
+        margin: 0.3,
+        filename:      'نتيجه -الطالب.pdf',
+        image:         { type: 'jpeg', quality: 0.98 },
+        html2canvas:   { scale: 2},
+        jsPDF:         { unit: 'in', format: 'letter', orientation: 'portrait'}
+          
+       };
+        html2pdf().set(opt).from(element).save();
+    }
+
+
+    window.addEventListener('load', function() {
+     setTimeout(function () {
+       const splash = document.getElementById('splash-screen');
+       if (splash) {
+          splash.classList.add('fade-out');
+          setTimeout(function() {
+            splash.style.display = 'none';
+          }, 800);
+       }
+     }, 3000);
+});
+   
+   
+   
+   
+   
+   
+   
