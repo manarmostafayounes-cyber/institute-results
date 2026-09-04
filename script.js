@@ -52,22 +52,23 @@ async function searchResult() {
 
     try {  
     // 2. جلب البيانات ديناميكبا من جوجل شيت 
-     let response = await fetch(`${SCRIPT_URL}?query=${encodeURIComponent(rollInput)}`); 
+     let cleanRoll = rollInput.replace(/[٩-٠]/g, d => "0123456789" [" ٠١٢٣٤٥٦٧٨٩" .indexOf(d)]);
+     let response = await fetch(`${SCRIPT_URL}?query=${encodeURIComponent(cleanRoll)}`); 
      let student = await response.json();
 
      //التاكد ان النتيجه موجوده و مفيش خطأ 
-     if (!student.error) {
+     if ( student && !student.error) {
          let cleanInput = normalizeText(nameInput);
          let cleanStudentName = normalizeText(student.studentName);
 
          let inputWords =  cleanInput.split(" ").filter(word => word.length > 0);
-         let isMatch = inputWords.every(word => cleanStudentName.includes(word));
+         let isMatch = inputWords.some(word => cleanStudentName.includes(word));
 
 
 
         //التاكد من ان الاسم المكتوب يطابق الاسم المسجل في جوجل شيت 
         if (!isMatch){
-           showError("اسم الطالب غير مطابق لرقم الجلوس المدخل!")
+           showError("اسم الطالب غير مطابق لرقم الجلوس المدخل!");
          return;
         }
            //4.عرض البيانات في الواجهه
