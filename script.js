@@ -166,27 +166,17 @@ async function searchResult() {
        return text
        .toString()
        .trim()
-       .replace(/[\u00A0\u1680\u180E\u2000-\u200B\u202F\u205F\u3000]/g, "")
        .toLowerCase()             //تحويل الانجليزي ل small
        .replace(/[\u064b-\u0652]/g, "")
-       .replace(/[آأا]/g,"ا")    //تحويل جميع انواع الهمزات الى ا 
+       .replace(/[أا]/g,"ا")    //تحويل جميع انواع الهمزات الى ا 
        .replace(/ى/g, "ي")      //تحويل ال ى ال ي (او العكس )
        .replace(/ة/g, "ه")      //تحويل التاء المربوطة الى ه
        .replace(/-/g, "")
        .replace(/عبد\s+/g, "عبد")
-       .replace(/(^|\s)ال/g, "$1")
+       .replace(/ال/g, "")
        .replace(/\s+/g," ");
     }
-      let normalizedInput = normalizeText(enteredName);
-      let normalizedSheetName = normalizeText(studentData.name);
-
-      let inputWords = normalizedInput.split(" ").filter(w => w.length > 0);
-      let isValidMatch = matches.length >= Math.min(2, inputWords.length);
-
-      if (!isValidMatch) {
-         showAlert("اسم الطالب غير مطابق لرقم الجلوس المدخل!");
-         return;
-      }
+    
 
 
 
