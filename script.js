@@ -52,7 +52,7 @@ async function searchResult() {
 
     try {  
     // 2. جلب البيانات ديناميكبا من جوجل شيت 
-     let cleanRoll = rollInput.replace(/[٩-٠]/g, d => "0123456789" [" ٠١٢٣٤٥٦٧٨٩" .indexOf(d)]);
+     let cleanRoll = rollInput.replace(/[\u0660-\u0660]/g, d => d.charCodeAt(0) - 0x0660);
      let response = await fetch(`${SCRIPT_URL}?query=${encodeURIComponent(cleanRoll)}`); 
      let student = await response.json();
 
