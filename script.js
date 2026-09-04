@@ -173,7 +173,7 @@ async function searchResult() {
        .replace(/ة/g, "ه")      //تحويل التاء المربوطة الى ه
        .replace(/-/g, "")
        .replace(/عبد\s+/g, "عبد")
-       .replace(/ال/g, "")
+       .replace(/(^|\s)ال/g, "$1")
        .replace(/\s+/g," ");
     }
     
