@@ -271,7 +271,7 @@ transform: translateY(0);
     position:fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background: linear-gradient(180deg, #0d2038 0%, #153154 50%, #0d2038 100%);
     display: flex;
@@ -279,18 +279,12 @@ transform: translateY(0);
     align-items: center;
     z-index: 9999;
     box-sizing: border-box;
-    padding: 10px;
-    transition: opacity 0.5s ease;
+    padding: 0;
     }
     #splash-logo {
-      width: 98%;
-      max-width: 520px;
-      max-height: 75vh;
-      height: auto;
-      object-fit: contain;
-      border-radius: 16px;
-      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
-      transform: translateY(-7vh);
+      width: 100vw;
+      height: 100vh;
+      object-fit: fill;
 
 
     }
@@ -301,3 +295,4 @@ transform: translateY(0);
        opacity: 0;
        visibility: hidden;
     }
+
