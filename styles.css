@@ -1,3 +1,27 @@
+*{
+  font-family: 'Cairo', sans-serif
+  !important;
+
+}
+ .swal2-popup{
+   font-family:'Cairo',sans-serif
+   !important;
+   
+   border-radius: 15px !important;
+   padding: 20p !important;
+
+ }
+ .swal2-title {
+    font-size: 20px !important;
+    color: #1e293b !important;
+ }
+ 
+ .swal2-styled.swal2-confirm{
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  padding: 8px 24px !important;
+ }
+ 
  *{ 
     margin: 0;
     padding: 0;

@@ -62,7 +62,7 @@ async function searchResult() {
          let cleanStudentName = normalizeText(student.studentName);
 
          let inputWords =  cleanInput.split(" ").filter(word => word.length > 0);
-         let isMatch = inputWords.some(word => cleanStudentName.includes(word));
+         let isMatch = inputWords.every(word => cleanStudentName.includes(word));
 
 
 
@@ -119,6 +119,7 @@ async function searchResult() {
 
 
 } catch (error) {
+   console.error("تفاصيل الخطا الحقيقي :",error);
     showError(" حدث خطأ اثناء الاتصال بقاعده البيانات!")
 
 } finally {
@@ -169,12 +170,12 @@ async function searchResult() {
        .trim()
        .toLowerCase()             //تحويل الانجليزي ل small
        .replace(/[\u064b-\u0652]/g, "")
-       .replace(/[أا]/g,"ا")    //تحويل جميع انواع الهمزات الى ا 
-       .replace(/ى/g, "ي")      //تحويل ال ى ال ي (او العكس )
-       .replace(/ة/g, "ه")      //تحويل التاء المربوطة الى ه
+       .replace(/[\u0621\u0622\u0623\u0624\u0625\u0626\u9625]/g, "\u0627")    //تحويل جميع انواع الهمزات الى ا 
+       .replace(/\u0649/g, "\u064a")      //تحويل ال ى ال ي (او العكس )
+       .replace(/\u0629/g, "\u0647")      //تحويل التاء المربوطة الى ه
        .replace(/-/g, "")
-       .replace(/عبد\s+/g, "عبد")
-       .replace(/ال/g, "")
+       .replace(/\b\u0627\u0644/g, "")
+       .replace(/\u0639\u0628\u062f\s+/g, "\u0639\u0628\u062f")
        .replace(/\s+/g," ");
     }
     
