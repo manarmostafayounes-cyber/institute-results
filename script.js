@@ -53,7 +53,7 @@ async function searchResult() {
     try {  
     // 2. جلب البيانات ديناميكبا من جوجل شيت 
      let cleanRoll = rollInput.replace(/[\u0660-\u0660]/g, d => d.charCodeAt(0) - 0x0660);
-     let response = await fetch(`${SCRIPT_URL}?query=${encodeURIComponent(cleanRoll)}`); 
+     let response = await fetch(`${SCRIPT_URL}?query=${encodeURIComponent(cleanRoll)}&t=${Date.now()}`); 
      let student = await response.json();
 
      //التاكد ان النتيجه موجوده و مفيش خطأ 
@@ -168,7 +168,6 @@ async function searchResult() {
        return text
        .toString()
        .trim()
-       .toLowerCase()             //تحويل الانجليزي ل small
        .replace(/[\u064b-\u0652]/g, "")
        .replace(/[\u0621\u0622\u0623\u0624\u0625\u0626\u9625]/g, "\u0627")    //تحويل جميع انواع الهمزات الى ا 
        .replace(/\u0649/g, "\u064a")      //تحويل ال ى ال ي (او العكس )
@@ -208,9 +207,12 @@ async function searchResult() {
        }
      }, 3000);
 });
-   
-   
-   
+
+
+
+window.addEventListener("DOMContentLoaded",() => {
+      resetSearch();
+});
    
    
    
