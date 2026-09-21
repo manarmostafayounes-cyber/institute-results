@@ -53,24 +53,12 @@ async function searchResult() {
     try {  
     // 2. جلب البيانات ديناميكبا من جوجل شيت 
      let cleanRoll = rollInput.replace(/[\u0660-\u0660]/g, d => d.charCodeAt(0) - 0x0660);
-     let response = await fetch(`${SCRIPT_URL}?query=${encodeURIComponent(cleanRoll)}&t=${Date.now()}`); 
+     let response = await fetch(`${SCRIPT_URL}?query=${encodeURIComponent(cleanRoll)}&_t=${Date.now()}`); 
      let student = await response.json();
 
      //التاكد ان النتيجه موجوده و مفيش خطأ 
-     if ( student && !student.error) {
-         let cleanInput = normalizeText(nameInput);
-         let cleanStudentName = normalizeText(student.studentName);
-
-         let inputWords =  cleanInput.split(" ").filter(word => word.length > 0);
-         let isMatch = inputWords.every(word => cleanStudentName.includes(word));
-
-
-
-        //التاكد من ان الاسم المكتوب يطابق الاسم المسجل في جوجل شيت 
-        if (!isMatch){
-           showError("اسم الطالب غير مطابق لرقم الجلوس المدخل!");
-         return;
-        }
+if ( student && !student.error) {
+   
            //4.عرض البيانات في الواجهه
            document.getElementById("studentDetails").innerHTML=`
            <b>اسم الطالب :</b> ${student.studentName}<br>
