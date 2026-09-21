@@ -39,7 +39,9 @@
          <form onsubmit="event.preventDefault (); searchResult();" class="form-group">
             <input type="text" id="studentName" placeholder="ادخل اسم الطالب" required>
             <input type="text" id="rollNumber" placeholder="ادخل رقم الجلوس " required>
-            <button type="submit" class="btn-primary">عرض النتيجه</button>
+            <button type="submit"  id="searchBtn"  class="btn-primary">
+               <span class="btn-text">عرض النتيجه </span> 
+            </button>
          </form>
 
          <div id="errorMsg" class="error-msg hidden"></div>

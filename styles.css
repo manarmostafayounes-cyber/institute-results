@@ -153,7 +153,7 @@ input:focus {
 
 table {
      width:100%;
-     direction: rti;
+     direction: rtl;
      border-collapse: collapse;
      margin-bottom: 20px;
 
@@ -226,9 +226,9 @@ table td:last-child {
 
 
 
-.bdf-btn {
-   background-color: linear-gradient(135deg, #0056b3,#003d80);
-   color: #ffffff;
+.pdf-btn {
+   background: linear-gradient(135deg, #0056b3,#003d80) !important;
+   color: #ffffff !important;
    border: none;
    padding: 12px 24px;
    border-radius: 8px;
@@ -248,7 +248,7 @@ table td:last-child {
 
 }
 .pdf-btn:hover{
-    background: linear-gradient(135deg, #004494,#002b5c);
+    background: linear-gradient(135deg, #004494,#002b5c) !important;
     transform:  translateY(-2px);
     box-shadow: 0 6px 15px rgba(0, 86, 179, 0.35);
 }
@@ -301,3 +301,26 @@ transform: translateY(0);
        opacity: 0;
        visibility: hidden;
     }
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color:#ffffff;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+  margin-left: 8px;
+
+}
+@keyframes spin{
+ 0% { transform: rotate(0deg);}
+ 100% { transform: rotate(360deg);}
+
+
+}
+button:disabled{
+  opacity: 0.85;
+  cursor: wait !important;
+}

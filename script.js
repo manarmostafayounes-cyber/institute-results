@@ -44,7 +44,7 @@ async function searchResult() {
        let searchBtn = document.getElementById("searchcard").querySelector("button");
        if (searchBtn) {
           searchBtn.disabled = true;
-          searchBtn.innerText = "جاري البحث ";
+          searchBtn.innerHTML ='<span class="spinner"></span> جاري البحث...';
 
        }
 
@@ -125,7 +125,7 @@ async function searchResult() {
 } finally {
   if (searchBtn) {
     searchBtn.disabled = false;
-    searchBtn.innerHTML = "اظهار النتيجه ";
+    searchBtn.innerHTML = "عرض النتيجه ";
   }
 } 
 
