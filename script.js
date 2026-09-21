@@ -2,7 +2,7 @@
 
 
 
-const SCRIPT_URL ="https://script.google.com/macros/s/AKfycbwAIWmIQ-TLNgJifNKN_4TTSSai6_lM-gMwRfJitVzVKcjaJEjvfMT4tcIISrHOs1st/exec";
+const SCRIPT_URL ="https://script.google.com/macros/s/AKfycbzNNa72ssLGHJ_d61lT_iCozkxj-ZOSbpGB7kb4tT7xTlhLUva-Ke3yVvbZRxC8tmTC/exec";
 
 
 const subjectNames = [
