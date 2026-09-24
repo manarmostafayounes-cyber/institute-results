@@ -63,9 +63,12 @@
 
 .card{
        background-color: white;
-       padding:25px 20px;
+       padding:25px 20px 0px 20px;
        border-radius: 12px; 
        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+       overflow: hidden;
+       display: flex;
+       flex-direction: column;
        
 }
 
@@ -323,4 +326,33 @@ transform: translateY(0);
 button:disabled{
   opacity: 0.85;
   cursor: wait !important;
+}
+.portal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  margin-top: auto;
+  width: calc(100% + 40px);
+  margin-right: -20px;
+  margin-left: -20px;
+  margin-bottom: 0px;
+  background-color: #f1f5f9;
+  border-top: 1px solid #e2e8f0;
+  direction: rtl;
+  box-sizing: border-box;
+}
+.portal-footer a,
+.portal-footer p,
+.portal-footer span{
+  color:#334155 !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+  margin: 0;
+
+}
+.portal-footer a:hover {
+  color:#0284c7 !important;
 }

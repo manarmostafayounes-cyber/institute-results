@@ -33,7 +33,7 @@ async function searchResult() {
     let rollInput = document.getElementById("rollNumber").value.trim();    
     let searchcard = document.getElementById("searchcard");
     let resultcard = document.getElementById("resultcard");
-    let errorMsg = document.getElementById("errorMag");
+    let errorMsg = document.getElementById("errorMsg");
 
     // 1. التاكد ان الخانتين مش فاضين
 
@@ -201,7 +201,6 @@ if ( student && !student.error) {
 window.addEventListener("DOMContentLoaded",() => {
       resetSearch();
 });
-   
    
    
    
