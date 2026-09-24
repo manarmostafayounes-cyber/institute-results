@@ -31,9 +31,7 @@
 
  body {
        background-color: #f2f4f7;
-       height: 100vh;
-       margin: 0;
-       overflow: hidden;
+       min-height: 100vh;
        display: flex;
       flex-direction: column;
       align-items: center;
@@ -57,24 +55,17 @@
 
 /*الحاويه الرئيسيه*/
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 450px;
-    height: 90vh;
-    max-height: 600px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    padding: 20px 15px;
     
 }
 
 .card{
-       padding:25px 20px 10px 20px;
-       flex: 1;
-       display: flex;
-       flex-direction: column;
+   background-color: white;
+   padding: 25px 20px;
+   border-radius: 12px;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .card h2{
@@ -332,28 +323,4 @@ button:disabled{
   opacity: 0.85;
   cursor: wait !important;
 }
-.portal-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 15px;
-  margin-top: auto;
-  width: 100%;
-  background-color: #f1f5f9;
-  border-top: 1px solid #e2e8f0;
-  box-sizing: border-box;
-}
-.portal-footer a,
-.portal-footer p,
-.portal-footer span{
-  color:#475569 !important;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.82rem;
-  margin: 0;
 
-}
-.portal-footer a:hover {
-  color:#0284c7 !important;
-}
