@@ -204,3 +204,39 @@ window.addEventListener("DOMContentLoaded",() => {
    
    
    
+
+
+
+
+//وظائف النوافذ المنبثقة
+
+function openModal(id) {
+   document.getElementById(id).classList.add('active');
+
+}
+
+function closeModal(id) {
+   document.getElementById(id).classList.remove('active');
+}
+
+function closeModalOnBg(event, id) {
+   if (event.target.classList.contains('portal-modal-overlay')) {
+      closeModal(id);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
