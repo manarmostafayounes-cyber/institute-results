@@ -1,0 +1,160 @@
+<!--نموذج التاني-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوابة استعلام النتائج الطلاب</title>
+  <!--نموزج الايقونات طاقيه التخرج و غيرها -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-card">
+        
+        <div class="portal-header">
+            <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h2>بوابه النتائج الطلاب</h2>
+          <br>
+
+          <br>
+
+          <br>
+        </div>
+         
+        <div class="search-form" id="searchcard">
+           <div class="input-group">
+            <i class="fa-solid fa-user input-icon"></i>
+            <input type="text" id="studentName" placeholder="ادخل الاسم ثلاثي" autocomplete="off">
+           </div>
+
+         <div class="input-group">
+            <i class="fa-solid fa-id-card input-icon"></i>
+            <input type="text" id="rollNumber" placeholder="ادخل رقم الجلوس" autocomplete="off">
+         </div>
+
+
+         <button type="button" id="searchBtn" onclick="searchResult()">
+           <i class="fa-solid fa-magnifying-glass"></i>استعلام عن النتيجه  
+        </button>
+       
+        </div>
+
+       <p id="errorMsg" style="color:red; text-align: center; margin-top: 10px;"></p>
+
+        <div id="resultcard" class="result-container hidden">
+            <div id="studentCard" class="student-card">
+                <div id="studentDetails"></div>
+
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>المادة</th>
+                            <th>التقدير</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gradesTableBody"></tbody>
+                </table>
+                
+
+                <div id="gpaBox" class="gpa-box"></div>
+
+            </div>
+     
+     <div class="action-buttons">
+           <button id="downloadPdfBtn" class="download-btn" onclick="downloadPDF()">
+            <i class="fa-solid fa-file-pdf"></i>تحميل النتيجة (PDF)
+        </button>
+
+        <button id="resetBtn" class="reset-btn" onclick="resetSearch()">
+            <i class="fa-solid fa-rotate-right">استعلام اخر </i>
+        </button>
+      </div>
+      
+     </div>
+
+
+ </div>
+   <footer class="portal-footer">
+      <a href="javascript:void(0)" onclick="openModal('privacyModal')">
+        <i class="fa-solid fa-shield-halved"></i>سياسة الخصوصية 
+    </a>
+     <span>|</span>
+     <a href="javascript:void(0)" onclick="openModal('aboutModal')">
+        <i class="fa-solid fa-circle-info"></i>ماذا عنا 
+    </a>
+     <span>|</span>
+    <p>&copy; 2027 جميع الحقوق محفوظة</p>
+   </footer>
+   <!--(models)-->
+      
+   <!--نافذه سياسه لبخصوصيه-->
+   <div id="privacyModal" class="portal-modal-overlay" onclick="closeModalOnBg(event, 'privacyModal')">
+    <div class="portal-modal-box">
+        <div class="portal-modal-header">
+            <h3>سياسة الخصوصية </h3>
+            <button class="portal-modal-close" onclick="closeModal('privacyModal')">&times;</button>
+        </div>
+        <div class="portal-modal-body">
+            <p>
+                نحن في <strong>معهد العباسية للحاسبات الاليه و العلوم التجاريه </strong>نحترم خصوصيه الطلاب و المتقدمين ونلتزم بحمايه بيانتاتهم و ارقام الجلوس و سجلاتهم اثناء الاستعلام عن النتائج و نقوم باستخدام البيانات المدخله (مثل الاسم و رقم الجلوس ) فقط لغرض العرض و التحقيق من النتيجه و  (PDF) الخاص بالطلب اصدار كارت النتيجة 
+            </p>
+
+          <h4>استخدام البيانات:</h4>  
+          <ul>
+            <li>عرض نتائج الامتحانات بدقه وسرعه فور ادخال رقم الجلوس و الاسم.</li>
+            <li>  توليد وتحميل كارت النتيجة PDF للطالب.</li>
+            <li> ضمان عدم مشاركة او عرض بيانات اي طالب لغير المصرح لهم.</li>
+          </ul>
+
+          <h4>حماية البيانات:</h4>
+          <P>.نحرص على تطبيق افضل الممارسات الفنية و الامنية لحماية السجلات و النتائج من اي تعديل او وصول غير مصرح به</P>
+        </div>
+        <div class="portal-modal-footer">
+            <button class="btn-portal-close" onclick="closeModal('privacyModal')">اغلاق</button>
+        </div>
+    </div>
+</div>
+    <!--ماذا عنا-->
+    <div id="aboutModal" class="portal-modal-overlay" onclick="closeModalOnBg(event, 'aboutModal')">
+        <div class="portal-modal-box">
+            <div class="portal-modal-header">
+                <h3>ماذا عنا  </h3>
+                <button class="portal-modal-close" onclick="closeModal('aboutModal')">&times;</button>
+            </div>
+            <div class="portal-modal-body">
+                <p><strong> بوابه استعلام النتائج الطلابيه </strong>هي منصه الالكترونيه المخصصه لتمكين الطلاب من الاطلاع علي نتائج امتحناتهم الفصلية و السنويه بسهولة و سرعة </p>
+                 
+                <p>بالاضافة الى امكانيه طباعة ,(GPA) تتيح البوابه للطلاب معرفة درجات المواد و المعدل التراكمي </p>
+                 
+                <p>تم تصميم البوابة لتقديم خدمة سلسه و امنة تعمل علي مختلف الاجهزة .</p>
+            </div>
+            <div class="portal-modal-footer">
+               <button class="btn-portal-close" onclick="closeModal('aboutModal')">اغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+
+ <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
