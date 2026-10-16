@@ -170,17 +170,25 @@ if ( student && !student.error) {
 
 
     function downloadPDF() {
-       let element = document.getElementById("resultcard");
+       let element = document.querySelector(".student-card");
+       let actionButtons = document.querySelector(".action-buttons");
+       
+       if (actionButtons) {
+         actionButtons.style.display = "none";
+       }
 
        let opt = {
-        margin: 0.3,
-        filename:      'نتيجه -الطالب.pdf',
+        margin: 10,
+        filename:      'Student_Result.pdf',
         image:         { type: 'jpeg', quality: 0.98 },
-        html2canvas:   { scale: 2},
-        jsPDF:         { unit: 'in', format: 'letter', orientation: 'portrait'}
-          
+        html2canvas:   { scale: 2, useCORS: true, scrollY: 0},
+        jsPDF:         { unit: 'mm', format: 'a4', orientation: 'portrait'}
        };
-        html2pdf().set(opt).from(element).save();
+        html2pdf().set(opt).from(element).save().then(function(){
+         if (actionButtons) {
+            actionButtons.style.display ="flex"
+         }
+        });
     }
 
 
