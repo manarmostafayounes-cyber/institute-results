@@ -171,11 +171,6 @@ if ( student && !student.error) {
 
     function downloadPDF() {
        let element = document.querySelector(".student-card");
-       let actionButtons = document.querySelector(".action-buttons");
-       
-       if (actionButtons) {
-         actionButtons.style.display = "none";
-       }
 
        let opt = {
         margin: 10,
@@ -184,11 +179,7 @@ if ( student && !student.error) {
         html2canvas:   { scale: 2, useCORS: true, scrollY: 0},
         jsPDF:         { unit: 'mm', format: 'a4', orientation: 'portrait'}
        };
-        html2pdf().set(opt).from(element).save().then(function(){
-         if (actionButtons) {
-            actionButtons.style.display ="flex"
-         }
-        });
+        html2pdf().set(opt).from(element).save();
     }
 
 
