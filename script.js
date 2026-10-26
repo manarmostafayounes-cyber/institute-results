@@ -2,7 +2,7 @@
 
 
 
-const SCRIPT_URL ="https://script.google.com/macros/s/AKfycbzNNa72ssLGHJ_d61lT_iCozkxj-ZOSbpGB7kb4tT7xTlhLUva-Ke3yVvbZRxC8tmTC/exec";
+const SCRIPT_URL ="https://script.google.com/macros/s/AKfycbxKzK8TDMEJMHIwOJXKiijl2jN4LtOR3AHAyZS6cujPmAUYMczyUfBsT8ZORKjoq7tt/exec";
 
 
 const subjectNames = [
@@ -59,7 +59,22 @@ async function searchResult() {
      //التاكد ان النتيجه موجوده و مفيش خطأ 
 if ( student && !student.error) {
    
-           //4.عرض البيانات في الواجهه
+   if (student.paymentStatus === "غير مدفوع " || student.paymentStatus === "unpaid") {
+      swal.fire({
+         icon: 'error',
+         title: 'عذراً لا يمكن عرض النتيجه ',
+         text: 'يجب دفع الرسوم الدراسية اولا!',
+         confirmButtonColor:  '#d33',
+         confirmButtonText: 'حسنا',
+   }).then((result) => {
+      if (result.isConfirmed) {
+         resetSearch();
+      }
+   });
+   return;
+   }
+
+   //4.عرض البيانات في الواجهه
            document.getElementById("studentDetails").innerHTML=`
            <b>اسم الطالب :</b> ${student.studentName}<br>
            <b>رقم الجلوس:</b> ${student.rollNumber}<br>
