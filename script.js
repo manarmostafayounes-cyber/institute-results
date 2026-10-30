@@ -245,8 +245,102 @@ function closeModalOnBg(event, id) {
 
 
 
+document.addEventListener("DOMContentLoaded", function() {
+
+ window. showPetitionForm = function() {
+      let searchNameInput = document.getElementById('studentName');
+      let searchRollInput = document.getElementById('rollNumber');
 
 
+      let petitionNameField = document.getElementById('petStudentName');
+      let petitionSeatField = document.getElementById('petSeatNo') ;
+
+      if (petitionNameField && searchNameInput) {
+         petitionNameField.value = searchNameInput.value;
+      }
+      if (petitionSeatField && searchRollInput) {
+         petitionSeatField.value = searchRollInput.value;
+      }
+
+      //تعبئه قائمه المواد تلقائيه من مصفوفه subjectNames
+      let subjectSelect = document.getElementById('petitionSubject');
+      if (subjectSelect && typeof subjectNames !== 'undefined') {
+         subjectSelect.innerHTML = '<option value="" disabled selected>اختر الماده</option>'; // Clear existing options
+         subjectNames.forEach(function(subject) {
+            let option = document.createElement('option');
+            option.value = subject;
+            option.textContent = subject;
+            subjectSelect.appendChild(option);
+         });
+      }               
+
+   let petitionCard = document.getElementById('petitionCard');
+   if (petitionCard) {
+      petitionCard.style.display = 'block';
+      petitionCard.scrollIntoView({ behavior: 'smooth' });
+   }
+
+ };
+
+   window.closePetition = function() {
+      let petitionCard = document.getElementById('petitionCard');
+      if (petitionCard) {
+         petitionCard.style.display = 'none';
+      }
+
+};
+
+
+
+const petitionForm = document.getElementById('petitionForm');
+   if (petitionForm) {
+      petitionForm.addEventListener('submit', function(event) {
+         event.preventDefault();
+
+         let studentName = document.getElementById('petStudentName').value;
+         let subject = document.getElementById('petitionSubject').value;
+         let receiptNo = document.getElementById('receiptNumber').value;
+
+   if (!subject) {
+      Swal.fire({
+         icon: 'warning',
+         title: 'تنبيه',
+         text: 'يرجى اختيار الماده المراد عمل التماس لها !',
+         confirmButtonColor:'#00bcd4'
+      });
+      return;
+   }
+
+   swal.fire({
+      icon: 'success',
+      title: 'تم ارسال الالتماس بنجاح',
+      html: `عزيزي الطالب <b>${studentName}</b><br>تم تسجيل طلب الالتماس لمادة <b>${subject}</b> رقم الايصال <b>${receiptNo}</b>.<br> جاري مراجعه الطلب من قبل الكنترول .`,
+      confirmButtonColor:'#00bcd4'
+   }).then((result) => {
+      closePetition();
+      petitionForm.reset();
+
+      let fileText = document.getElementById('fileNameDisplay');
+      if (fileText) {
+         fileText.textContent = "اختر صورة ايصال الخزنة ";
+         fileText.style.color = "#555";
+      }
+   });
+});
+ }
+});
+
+
+window.updateFileName = function(input) {
+   let fileNameDisplay = document.getElementById('fileNameDisplay');
+   if (input.files && input.files[0]) {
+      fileNameDisplay.textContent = "تم اختيار : " + input.files[0].name;
+      fileNameDisplay.style.color = "#00bcda";
+   } else {
+      fileNameDisplay.textContent = "اختر صورة ايصال الخزنة ";
+      fileNameDisplay.style.color = "#555";
+   }  
+};       
 
 
 
