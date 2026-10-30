@@ -310,24 +310,31 @@ const petitionForm = document.getElementById('petitionForm');
       });
       return;
    }
-
+   //داله اظهار رسالهالنجاح 
    swal.fire({
       icon: 'success',
       title: 'تم ارسال الالتماس بنجاح',
       html: `عزيزي الطالب <b>${studentName}</b><br>تم تسجيل طلب الالتماس لمادة <b>${subject}</b> رقم الايصال <b>${receiptNo}</b>.<br> جاري مراجعه الطلب من قبل الكنترول .`,
       confirmButtonColor:'#00bcd4'
    }).then((result) => {
-      closePetition();
-      petitionForm.reset();
+      if (result.isConfirmed) {
+         //اغلاق نافزه الالتماس وفك الكارد 
+         let petitionCard = document.getElementById('petitionCard');
+         if (petitionCard) {
+            petitionCard.style.display = 'none';
+         }
 
-      let fileText = document.getElementById('fileNameDisplay');
+         petitionForm.reset();
+
+      let fileText = document.getElementById('fileLabelText');
       if (fileText) {
          fileText.textContent = "اختر صورة ايصال الخزنة ";
          fileText.style.color = "#555";
       }
+      }
    });
 });
- }
+   }
 });
 
 
